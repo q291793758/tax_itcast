@@ -110,4 +110,5 @@ public class User {
     public void setMemo(String memo) {
         this.memo = memo;
     }
+
 }

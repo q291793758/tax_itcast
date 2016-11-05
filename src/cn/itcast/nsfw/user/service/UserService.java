@@ -32,4 +32,6 @@ public interface UserService {
     public void updateUserAndRole(User user, String[] userRoleIds);
 
     public List<UserRole> getUserRolesByUserId(String id);
+
+    public List<User> findUserByAccountAndPassword(String account,String password);
 }

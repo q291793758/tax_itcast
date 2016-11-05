@@ -176,4 +176,9 @@ public class UserServiceImpl implements UserService {
     public List<UserRole> getUserRolesByUserId(String id) {
         return userDao.getUserRolesByUserId( id);
     }
+
+    @Override
+    public List<User> findUserByAccountAndPassword(String account,String password) {
+        return userDao.findUserByAccountAndPassword(account,password);
+    }
 }

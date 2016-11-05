@@ -15,7 +15,7 @@
 
 	<!--配置全局结果及异常映射-->
 	<package name="base-default" extends="struts-default">
-		<!--&lt;!&ndash;返回结果类型&ndash;&gt;-->
+		<!--返回结果类型-->
 		<!--<result-types>-->
 			<!--<result-type name="error" class="cn.itcast.core.action.SysResultAction"/>-->
 		<!--</result-types>-->
@@ -42,5 +42,12 @@
 	<include file="cn/itcast/nsfw/user/conf/user-struts.xml"/>
 	<!-- 包含角色管理的struts配置文件 -->
 	<include file="cn/itcast/nsfw/role/conf/role-struts.xml"/>
+	<!--包含系统首页struts配置文件-->
+	<include file="cn/itcast/home/conf/home-struts.xml"/>
+
+	<!--纳税服务系统首页struts配置文件-->
+	<include file="cn/itcast/nsfw/home/conf/home-struts.xml"/>
+
+	<include file="cn/itcast/login/conf/login-struts.xml"/>
 
 </struts>

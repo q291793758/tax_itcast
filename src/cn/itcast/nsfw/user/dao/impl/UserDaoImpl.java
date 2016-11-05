@@ -1,13 +1,9 @@
 package cn.itcast.nsfw.user.dao.impl;
 
 import cn.itcast.core.dao.impl.BaseDaoImpl;
-import cn.itcast.nsfw.role.dao.RoleDao;
-import cn.itcast.nsfw.role.entity.Role;
 import cn.itcast.nsfw.user.dao.UserDao;
 import cn.itcast.nsfw.user.entity.User;
 import cn.itcast.nsfw.user.entity.UserRole;
-import cn.itcast.nsfw.user.entity.UserRoleId;
-import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 
 import java.util.List;
@@ -51,5 +47,12 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
         query.setParameter(0, id);
         return query.list();
 
+    }
+
+    @Override
+    public List<User> findUserByAccountAndPassword(String account, String password) {
+        Query query = getSession().createQuery("FROM User where account=? AND password=?");
+        query.setParameter(0,account).setParameter(1,password);
+        return query.list();
     }
 }

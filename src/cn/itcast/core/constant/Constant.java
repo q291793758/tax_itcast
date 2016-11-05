@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Constant {
+
+    //系统用户在session中的标识符SYS_USER
+    public static String USER="SYS_USER";
+
+
     /*****************
      * 系统权限集合
      ************************/

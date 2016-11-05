@@ -92,12 +92,12 @@ public class UserAction extends BaseAction {
             user = userService.findObjectById(user.getId());
             //设置用户角色 用来回显
             List<UserRole> list = userService.getUserRolesByUserId(user.getId());
-            if (list != null&&list.size()>0) {
+            if (list != null && list.size() > 0) {
                 //查找出来的RoleId保存在 userRoleIds中
-                userRoleIds=new String[list.size()];
-                int i=0;
+                userRoleIds = new String[list.size()];
+                int i = 0;
                 for (UserRole userRole : list) {
-                    userRoleIds[i++]=userRole.getUserRoleId().getRole().getRoleId();
+                    userRoleIds[i++] = userRole.getUserRoleId().getRole().getRoleId();
                 }
             }
 
@@ -106,11 +106,12 @@ public class UserAction extends BaseAction {
     }
 
     //保存编辑
-    public String edit() {
+    public String edit() throws Exception {
+
         try {
-            if (user != null) {
+            if(user != null){
                 //处理头像
-                if (headImg != null) {
+                if(headImg != null){
                     //1、保存头像到upload/user
                     //获取保存路径的绝对地址
                     String filePath = ServletActionContext.getServletContext().getRealPath("upload/user");
@@ -298,4 +299,5 @@ public class UserAction extends BaseAction {
     public void setUserRoleIds(String[] userRoleIds) {
         this.userRoleIds = userRoleIds;
     }
+
 }

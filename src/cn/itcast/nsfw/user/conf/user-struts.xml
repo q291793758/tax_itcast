@@ -10,7 +10,7 @@
 			<result name="list" type="redirectAction">
 				<param name="actionName">user_listUI</param>
 			</result>
-			
+
 		</action>
 	</package>
 
