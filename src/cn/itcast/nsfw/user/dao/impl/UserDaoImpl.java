@@ -6,6 +6,7 @@ import cn.itcast.nsfw.user.entity.User;
 import cn.itcast.nsfw.user.entity.UserRole;
 import org.hibernate.Query;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
@@ -33,7 +34,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     }
 
     @Override
-    public void deleteUserRoleByUserId(String id) {
+    public void deleteUserRoleByUserId(Serializable id) {
         //String sql="DELETE FROM user_role WHERE userId = ?";
         Query query = getSession().createQuery("DELETE FROM UserRole where userRoleId.userId=?");
         query.setParameter(0, id);

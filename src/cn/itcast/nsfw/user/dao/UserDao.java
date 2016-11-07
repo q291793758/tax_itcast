@@ -4,6 +4,7 @@ import cn.itcast.core.dao.BaseDao;
 import cn.itcast.nsfw.user.entity.User;
 import cn.itcast.nsfw.user.entity.UserRole;
 
+import java.io.Serializable;
 import java.util.List;
 
 public interface UserDao extends BaseDao<User> {
@@ -12,7 +13,7 @@ public interface UserDao extends BaseDao<User> {
 
     public void saveUserRole(UserRole userRole);
 
-    public void deleteUserRoleByUserId(String id);
+    public void deleteUserRoleByUserId(Serializable id);
 
     public List<UserRole> getUserRolesByUserId(String id);
 

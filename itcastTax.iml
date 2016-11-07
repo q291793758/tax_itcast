@@ -13,6 +13,27 @@
           <root url="file://$MODULE_DIR$/src" />
         </sourceRoots>
       </configuration>
+      <facet type="Struts2" name="Struts 2">
+        <configuration>
+          <fileset id="s2fileset" name="My Fileset " removed="false">
+            <file>file://$MODULE_DIR$/config/struts.xml</file>
+          </fileset>
+          <fileset id="s2fileset2" name="My Fileset 2" removed="false">
+            <file>file://$MODULE_DIR$/src/cn/itcast/home/conf/home-struts.xml</file>
+            <file>file://$MODULE_DIR$/src/cn/itcast/nsfw/home/conf/home-struts.xml</file>
+            <file>file://$MODULE_DIR$/src/cn/itcast/nsfw/info/conf/info-struts.xml</file>
+            <file>file://$MODULE_DIR$/src/cn/itcast/login/conf/login-struts.xml</file>
+            <file>file://$MODULE_DIR$/src/cn/itcast/nsfw/role/conf/role-struts.xml</file>
+            <file>file://$MODULE_DIR$/test/cn/itcast/test/conf/test-struts.xml</file>
+            <file>file://$MODULE_DIR$/src/cn/itcast/nsfw/user/conf/user-struts.xml</file>
+          </fileset>
+          <fileset id="s2fileset3" name="My Fileset 3" removed="false">
+            <file>jar://$MODULE_DIR$/lib/struts2-core-2.3.20.jar!/struts-default.xml</file>
+            <file>jar://$MODULE_DIR$/lib/struts2-spring-plugin-2.3.20.jar!/struts-plugin.xml</file>
+          </fileset>
+          <propertiesKeys disabled="false" />
+        </configuration>
+      </facet>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
@@ -21,6 +42,14 @@
           <file>file://$MODULE_DIR$/src/cn/itcast/nsfw/user/conf/user-spring.xml</file>
           <file>file://$MODULE_DIR$/src/cn/itcast/nsfw/user/conf/user-spring.xml</file>
         </fileset>
+      </configuration>
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="sessionFactory" value="dataSource" />
+        </datasource-map>
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>

@@ -1,6 +1,6 @@
 package cn.itcast.nsfw.user.service.impl;
 
-import cn.itcast.core.exception.ServiceException;
+import cn.itcast.core.service.impl.BaseServiceImpl;
 import cn.itcast.core.util.ExcelUtil;
 import cn.itcast.nsfw.role.entity.Role;
 import cn.itcast.nsfw.user.dao.UserDao;
@@ -24,43 +24,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User> implements UserService {
     private UserDao userDao;
 
     public void setUserDao(UserDao userDao) {
+        super.setBaseDao(userDao);
         this.userDao = userDao;
     }
 
-    @Override
-    public void save(User user) {
-        userDao.save(user);
-    }
-
-    @Override
-    public void update(User user) {
-        userDao.update(user);
-    }
 
     @Override
     public void delete(Serializable id) {
         userDao.delete(id);
+        //删除用户对应角色
+        userDao.deleteUserRoleByUserId((id));
+
     }
 
-    @Override
-    public User findObjectById(Serializable id) {
-        return userDao.findObjectById(id);
-    }
-
-    @Override
-    public List<User> findObjects() throws ServiceException {
-        try {
-//            int i=1/0;  //错误显示
-        } catch (Exception e) {
-            throw new ServiceException();
-        }
-        return userDao.findObjects();
-    }
-
+    //导入EXCEL
     @Override
     public void importExcel(File userExcel, String userExcelFileName) {
         try {
@@ -136,6 +117,7 @@ public class UserServiceImpl implements UserService {
         ExcelUtil.exportUserExcel(userList, outputStream);
     }
 
+    //账号重复性验证
     @Override
     public List<User> findUserByAccountAndId(String id, String account) {
 
@@ -172,11 +154,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    //获得用户所有角色
     @Override
     public List<UserRole> getUserRolesByUserId(String id) {
         return userDao.getUserRolesByUserId( id);
     }
 
+    //根据 账号密码 查找用户
     @Override
     public List<User> findUserByAccountAndPassword(String account,String password) {
         return userDao.findUserByAccountAndPassword(account,password);

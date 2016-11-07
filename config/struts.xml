@@ -44,6 +44,8 @@
 	<include file="cn/itcast/nsfw/role/conf/role-struts.xml"/>
 	<!--包含系统首页struts配置文件-->
 	<include file="cn/itcast/home/conf/home-struts.xml"/>
+	<!--包含信息发布struts配置文件-->
+	<include file="cn/itcast/nsfw/info/conf/info-struts.xml"/>
 
 	<!--纳税服务系统首页struts配置文件-->
 	<include file="cn/itcast/nsfw/home/conf/home-struts.xml"/>

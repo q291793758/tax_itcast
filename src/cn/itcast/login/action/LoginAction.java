@@ -34,7 +34,7 @@ public class LoginAction extends ActionSupport {
                     //2.1、登录成功
                     User user = list.get(0);
                     //2.1.1、根据用户id查询该用户的所有角色
-//                    user.setUserRoles(userService.getUserRolesByUserId(user.getId()));
+                    user.setUserRoles(userService.getUserRolesByUserId(user.getId()));
                     //2.1.2、将用户信息保存到session中
                     ServletActionContext.getRequest().getSession().setAttribute(Constant.USER, user);
                     //2.1.3、将用户登录记录到日志文件
@@ -56,7 +56,18 @@ public class LoginAction extends ActionSupport {
 
 
     //注销
+    public String logout() {
+        //从session中删除当前用户信息
+        ServletActionContext.getRequest().getSession().removeAttribute(Constant.USER);
+        //跳转到登录页面
+        return toLoginUI();
+    }
 
+    //跳转没有权限访问页面
+    public String toNoPermissionUI() {
+
+        return "noPermission";
+    }
 
     public User getUser() {
         return user;

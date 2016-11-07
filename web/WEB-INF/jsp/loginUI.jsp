@@ -24,8 +24,8 @@ function setClean(){
 }
 
 //解决子框架嵌套的问题
-if(window != window.parent){
-	window.parent.location.reload(true);
+if(window != window.parent){  //发生框架嵌套
+	window.parent.location.reload(true); //刷新父窗口
 }
 
 </script>

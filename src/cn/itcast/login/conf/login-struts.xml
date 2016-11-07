@@ -8,6 +8,7 @@
 		<action name="login_*" class="cn.itcast.login.action.LoginAction" method="{1}">
 			<result name="{1}">/WEB-INF/jsp/home/{1}.jsp</result>
 			<result name="loginUI" >/WEB-INF/jsp/loginUI.jsp</result>
+			<result name="noPermission" >/WEB-INF/jsp/noPermissionUI.jsp</result>
 			<result name="home"  type="redirectAction">
 				<param name="actionName">home</param>
 			</result>

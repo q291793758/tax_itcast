@@ -42,10 +42,7 @@ public class UserAction extends BaseAction {
     //列表页面
     public String listUI() throws SysException {
         try {
-//            int i=1/0;
             userList = userService.findObjects();
-        } catch (ServiceException e) {
-            throw new ActionException(e.getMessage());
         } catch (Exception e) {
             throw new ActionException(e.getMessage());
         }

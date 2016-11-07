@@ -1,5 +1,7 @@
 package cn.itcast.core.dao;
 
+import cn.itcast.core.utils.QueryHelper;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,5 +17,8 @@ public interface BaseDao<T> {
 	public T findObjectById(Serializable id);
 	//查找列表
 	public List<T> findObjects();
-
+	//根据条件查询
+	public List<T> findObjects(String  hql, List<Object> parameters);
+	//使用工具类的条件查询
+	public List<T> findObjects(QueryHelper queryHelper);
 }
