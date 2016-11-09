@@ -4,18 +4,21 @@ import cn.itcast.core.action.BaseAction;
 import cn.itcast.core.exception.ActionException;
 import cn.itcast.core.exception.ServiceException;
 import cn.itcast.core.exception.SysException;
+import cn.itcast.core.util.QueryHelper;
 import cn.itcast.nsfw.role.service.RoleService;
 import cn.itcast.nsfw.user.entity.User;
 import cn.itcast.nsfw.user.entity.UserRole;
 import cn.itcast.nsfw.user.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.UUID;
 
@@ -42,7 +45,15 @@ public class UserAction extends BaseAction {
     //列表页面
     public String listUI() throws SysException {
         try {
-            userList = userService.findObjects();
+            QueryHelper qh = new QueryHelper(User.class, "u");
+
+            if (searchString != null) {
+                searchString = URLDecoder.decode(searchString, "utf-8");
+                if (StringUtils.isNotBlank(searchString)) {
+                    qh.addQueryCondition("u.name like ?", "%" + searchString + "%");
+                }
+            }
+            userList = userService.findObjects(qh);
         } catch (Exception e) {
             throw new ActionException(e.getMessage());
         }

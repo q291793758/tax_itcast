@@ -32,6 +32,7 @@
         <input type="submit" class="btnB2" value="保存" />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="button"  onclick="javascript:history.go(-1)" class="btnB2" value="返回" />
+        <s:hidden name="searchString"/>
     </div>
     </div></div></div>
    

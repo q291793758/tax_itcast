@@ -43,6 +43,10 @@
             document.forms[0].action = "${pageContext.request.contextPath}/nsfw/user_importExcel.action";
             document.forms[0].submit();
         }
+        function doSearch() {
+            document.forms[0].action = "${basePath}nsfw/user_listUI.action";
+            document.forms[0].submit();
+        }
     </script>
 </head>
 <body class="rightBody">
@@ -55,7 +59,7 @@
                 </div>
                 <div class="search_art">
                     <li>
-                        用户名：<s:textfield name="user.name" cssClass="s_text" id="userName" cssStyle="width:160px;"/>
+                        用户名：<s:textfield name="searchString" cssClass="s_text" id="searchString" cssStyle="width:160px;"/>
                     </li>
                     <li><input type="button" class="s_button" value="搜 索" onclick="doSearch()"/></li>
                     <li style="float:right;">

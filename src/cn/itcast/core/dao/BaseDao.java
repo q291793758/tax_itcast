@@ -1,6 +1,6 @@
 package cn.itcast.core.dao;
 
-import cn.itcast.core.utils.QueryHelper;
+import cn.itcast.core.util.QueryHelper;
 
 import java.io.Serializable;
 import java.util.List;

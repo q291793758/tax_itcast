@@ -50,6 +50,7 @@
             <td>
              	<s:date name="info.createTime" format="yyyy-MM-dd HH:mm"/>
              	<s:hidden name="info.createTime"/>
+             	<s:hidden name="searchString"/>
             </td>
         </tr>
     </table>

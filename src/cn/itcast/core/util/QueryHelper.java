@@ -1,4 +1,4 @@
-package cn.itcast.core.utils;
+package cn.itcast.core.util;
 
 
 import java.util.ArrayList;

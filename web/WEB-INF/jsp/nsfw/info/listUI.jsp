@@ -69,7 +69,7 @@
                 <div class="c_crumbs"><div><b></b><strong>信息发布管理</strong></div> </div>
                 <div class="search_art">
                     <li>
-                        信息标题：<s:textfield name="info.title" cssClass="s_text" id="infoTitle"  cssStyle="width:160px;"/>
+                        信息标题：<s:textfield name="searchString" cssClass="s_text" id="searchString"  cssStyle="width:160px;"/>
                     </li>
                     <li><input type="button" class="s_button" value="搜 索" onclick="doSearch()"/></li>
                     <li style="float:right;">

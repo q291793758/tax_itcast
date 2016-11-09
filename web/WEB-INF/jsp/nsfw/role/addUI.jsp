@@ -27,7 +27,7 @@
             <td><s:radio list="#{'1':'有效','0':'无效'}" name="role.state"/></td>
         </tr>
     </table>
-    
+                <s:hidden name="searchString"/>
     <div class="tc mt20">
         <input type="submit" class="btnB2" value="保存" />
         &nbsp;&nbsp;&nbsp;&nbsp;

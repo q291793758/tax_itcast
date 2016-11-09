@@ -2,7 +2,7 @@ package cn.itcast.core.service.impl;
 
 import cn.itcast.core.dao.BaseDao;
 import cn.itcast.core.service.BaseService;
-import cn.itcast.core.utils.QueryHelper;
+import cn.itcast.core.util.QueryHelper;
 
 import java.io.Serializable;
 import java.util.List;

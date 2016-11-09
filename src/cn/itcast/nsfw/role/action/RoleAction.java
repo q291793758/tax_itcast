@@ -3,12 +3,16 @@ package cn.itcast.nsfw.role.action;
 import cn.itcast.core.action.BaseAction;
 import cn.itcast.core.constant.Constant;
 import cn.itcast.core.exception.SysException;
+import cn.itcast.core.util.QueryHelper;
 import cn.itcast.nsfw.role.entity.Role;
 import cn.itcast.nsfw.role.entity.RolePrivilege;
 import cn.itcast.nsfw.role.entity.RolePrivilegeId;
 import cn.itcast.nsfw.role.service.RoleService;
 import com.opensymphony.xwork2.ActionContext;
+import org.apache.commons.lang.StringUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashSet;
 import java.util.List;
 
@@ -22,10 +26,18 @@ public class RoleAction extends BaseAction {
 
     //=================FUNCTION START=======================//
     //列表页面
-    public String listUI() throws SysException {
+    public String listUI() throws SysException, UnsupportedEncodingException {
         //加载权限集合
         ActionContext.getContext().getContextMap().put("privilegeMap", Constant.PRIVILEGE_MAP);
-        roleList = roleService.findObjects();
+        QueryHelper qh = new QueryHelper(Role.class, "r");
+
+        if (searchString != null) {
+            searchString = URLDecoder.decode(searchString, "utf-8");
+            if (StringUtils.isNotBlank(searchString)) {
+                qh.addQueryCondition("r.name like ?", "%" + searchString + "%");
+            }
+        }
+        roleList = roleService.findObjects(qh);
         return "listUI";
     }
 

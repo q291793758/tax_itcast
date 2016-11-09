@@ -1,7 +1,7 @@
 package cn.itcast.core.dao.impl;
 
 import cn.itcast.core.dao.BaseDao;
-import cn.itcast.core.utils.QueryHelper;
+import cn.itcast.core.util.QueryHelper;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 

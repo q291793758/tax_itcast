@@ -6,8 +6,8 @@ import java.util.List;
 
 public class BaseAction extends ActionSupport {
 
-    protected List<String> selectedRow;   //操作多个id [id1,id2]
-
+    public List<String> selectedRow;   //操作多个id [id1,id2]
+    public String searchString;
 
 
 
