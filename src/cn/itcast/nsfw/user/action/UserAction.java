@@ -27,7 +27,6 @@ public class UserAction extends BaseAction {
     private UserService userService;
     private RoleService roleService;
     private User user;
-    private List<User> userList;
     private String[] userRoleIds; //角色权限id
 
     //文件上传三要素
@@ -45,15 +44,15 @@ public class UserAction extends BaseAction {
     //列表页面
     public String listUI() throws SysException {
         try {
-            QueryHelper qh = new QueryHelper(User.class, "u");
+            QueryHelper queryHelper = new QueryHelper(User.class, "u");
 
             if (searchString != null) {
                 searchString = URLDecoder.decode(searchString, "utf-8");
                 if (StringUtils.isNotBlank(searchString)) {
-                    qh.addQueryCondition("u.name like ?", "%" + searchString + "%");
+                    queryHelper.addQueryCondition("u.name like ?", "%" + searchString + "%");
                 }
             }
-            userList = userService.findObjects(qh);
+            pageResult = userService.getPageResult(queryHelper, getPageNo(), getPageSize());
         } catch (Exception e) {
             throw new ActionException(e.getMessage());
         }
@@ -161,13 +160,13 @@ public class UserAction extends BaseAction {
     public void exportExcel() {
         try {
             //1、查找用户列表
-            userList = userService.findObjects();
+//            userService.findObjects()
             //2、导出
             HttpServletResponse response = ServletActionContext.getResponse();
             response.setContentType("application/x-execl");
             response.setHeader("Content-Disposition", "attachment;filename=" + new String("用户列表.xls".getBytes(), "ISO-8859-1"));
             ServletOutputStream outputStream = response.getOutputStream();
-            userService.exportExcel(userList, outputStream);
+            userService.exportExcel(userService.findObjects(), outputStream);
             if (outputStream != null) {
                 outputStream.close();
             }
@@ -217,9 +216,7 @@ public class UserAction extends BaseAction {
         return null;
     }
 
-    public List<User> getUserList() {
-        return userList;
-    }
+
     //=====================END=====================//
 
 
@@ -238,11 +235,6 @@ public class UserAction extends BaseAction {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
-
 
     public File getHeadImg() {
         return headImg;

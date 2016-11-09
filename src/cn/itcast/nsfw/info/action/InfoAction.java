@@ -13,31 +13,33 @@ import javax.servlet.http.HttpServletResponse;
 import java.net.URLDecoder;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 public class InfoAction extends BaseAction {
 
     private InfoService infoService;
-    private List<Info> infoList;
+//    private List<Info> infoList;
     private Info info;
+
+
 
 
     //列表页面
     public String listUI() throws Exception {
         try {
             //加载分类集合
-                ActionContext.getContext().getContextMap().put("infoTypeMap", Info.INFO_TYPE_MAP);
-            QueryHelper qh = new QueryHelper(Info.class, "i");
+            ActionContext.getContext().getContextMap().put("infoTypeMap", Info.INFO_TYPE_MAP);
+            QueryHelper queryHelper = new QueryHelper(Info.class, "i");
 
             if (searchString != null) {
                 searchString = URLDecoder.decode(searchString, "utf-8");
                 if (StringUtils.isNotBlank(searchString)) {
-                    qh.addQueryCondition("i.title like ?", "%" + searchString + "%");
+                    queryHelper.addQueryCondition("i.title like ?", "%" + searchString + "%");
                 }
-                qh.addQueryCondition("i.state = ?", "1");
-                qh.addOrderByCondition("i.createTime", qh.ORDER_BY_DESC);
+                queryHelper.addQueryCondition("i.state = ?", "1");
+                queryHelper.addOrderByCondition("i.createTime", queryHelper.ORDER_BY_DESC);
             }
-            infoList = infoService.findObjects(qh);
+            pageResult = infoService.getPageResult(queryHelper, getPageNo(), getPageSize());
+
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -128,13 +130,6 @@ public class InfoAction extends BaseAction {
         this.infoService = infoService;
     }
 
-    public List<Info> getInfoList() {
-        return infoList;
-    }
-
-    public void setInfoList(List<Info> infoList) {
-        this.infoList = infoList;
-    }
 
     public Info getInfo() {
         return info;
@@ -143,5 +138,8 @@ public class InfoAction extends BaseAction {
     public void setInfo(Info info) {
         this.info = info;
     }
+
+
+
 
 }

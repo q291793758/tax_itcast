@@ -80,4 +80,8 @@ public class QueryHelper {
         return parameters;
     }
 
+    //查询统计数的hql语句
+    public String getQueryCountHql(){
+        return "SELECT COUNT(*) "+fromClause+whereClause;
+    }
 }

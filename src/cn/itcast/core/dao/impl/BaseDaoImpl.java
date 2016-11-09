@@ -1,6 +1,7 @@
 package cn.itcast.core.dao.impl;
 
 import cn.itcast.core.dao.BaseDao;
+import cn.itcast.core.util.PageResult;
 import cn.itcast.core.util.QueryHelper;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -67,4 +68,33 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements Base
 
         return query.list();
     }
+    @Override
+    public PageResult getPageResult(QueryHelper queryHelper, int pageNo,
+                                    int pageSize) {
+        Query query=getSession().createQuery(queryHelper.getQueryListHql());
+        List<Object> parameters=queryHelper.getParameters();
+        //添加查询条件
+        if(parameters!=null){
+            for (int i = 0; i < parameters.size(); i++) {
+                query.setParameter(i, parameters.get(i));
+            }
+        }
+        //进行分页
+        if(pageNo<1) pageNo=1;
+
+        query.setFirstResult((pageNo-1)*pageSize);//设置数据起始索引号
+        query.setMaxResults(pageSize);
+        List items=query.list();
+
+        //获取总记录数
+        Query queryCount=getSession().createQuery(queryHelper.getQueryCountHql());
+        if(parameters!=null){
+            for (int i = 0; i < parameters.size(); i++) {
+                queryCount.setParameter(i, parameters.get(i));
+            }
+        }
+        long totalCount=(Long)queryCount.uniqueResult();
+        return new PageResult(totalCount, pageNo, pageSize, items);
+    }
+
 }

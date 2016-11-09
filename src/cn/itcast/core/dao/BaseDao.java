@@ -1,5 +1,6 @@
 package cn.itcast.core.dao;
 
+import cn.itcast.core.util.PageResult;
 import cn.itcast.core.util.QueryHelper;
 
 import java.io.Serializable;
@@ -21,4 +22,6 @@ public interface BaseDao<T> {
 	public List<T> findObjects(String  hql, List<Object> parameters);
 	//使用工具类的条件查询
 	public List<T> findObjects(QueryHelper queryHelper);
+	//分页
+	public PageResult getPageResult(QueryHelper queryHelper, int pageNo, int pageSize);
 }

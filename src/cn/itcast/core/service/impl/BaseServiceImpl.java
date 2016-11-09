@@ -2,6 +2,7 @@ package cn.itcast.core.service.impl;
 
 import cn.itcast.core.dao.BaseDao;
 import cn.itcast.core.service.BaseService;
+import cn.itcast.core.util.PageResult;
 import cn.itcast.core.util.QueryHelper;
 
 import java.io.Serializable;
@@ -50,5 +51,10 @@ public class BaseServiceImpl<T> implements BaseService<T> {
     @Override
     public List<T> findObjects(QueryHelper queryHelper) {
         return baseDao.findObjects(queryHelper);
+    }
+
+    //分页
+    public PageResult getPageResult(QueryHelper queryHelper, int pageNo, int pageSize) {
+        return baseDao.getPageResult(queryHelper,pageNo,pageSize);
     }
 }

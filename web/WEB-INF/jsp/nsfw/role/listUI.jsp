@@ -33,9 +33,11 @@
             document.forms[0].action = "${basePath}nsfw/role_deleteSelected.action";
             document.forms[0].submit();
         }
+        var list_url="${basePath}nsfw/role_listUI.action";
         //关键字查找
         function doSearch() {
-            document.forms[0].action = "${basePath}nsfw/role_listUI.action";
+            $("#pageNo").val(1);
+            document.forms[0].action = list_url;
             document.forms[0].submit();
         }
 
@@ -70,7 +72,7 @@
                             <td width="80" align="center">状态</td>
                             <td width="120" align="center">操作</td>
                         </tr>
-                        <s:iterator value="roleList" status="st">
+                        <s:iterator value="pageResult.items" status="st">
                             <tr
                                     <s:if test="#st.odd">bgcolor="f8f8f8"</s:if> >
                                 <td align="center"><input type="checkbox" name="selectedRow"
@@ -91,20 +93,7 @@
                     </table>
                 </div>
             </div>
-            <div class="c_pate" style="margin-top: 5px;">
-                <table width="100%" class="pageDown" border="0" cellspacing="0"
-                       cellpadding="0">
-                    <tr>
-                        <td align="right">
-                            总共1条记录，当前第 1 页，共 1 页 &nbsp;&nbsp;
-                            <a href="#">上一页</a>&nbsp;&nbsp;<a href="#">下一页</a>
-                            到&nbsp;<input type="text" style="width: 30px;"
-                                          onkeypress="if(event.keyCode == 13){doGoPage(this.value);}" min="1"
-                                          max="" value="1"/> &nbsp;&nbsp;
-                        </td>
-                    </tr>
-                </table>
-            </div>
+            <jsp:include page="/common/pageNavigator.jsp"></jsp:include>
         </div>
     </div>
 </form>

@@ -29,15 +29,16 @@ public class RoleAction extends BaseAction {
     public String listUI() throws SysException, UnsupportedEncodingException {
         //加载权限集合
         ActionContext.getContext().getContextMap().put("privilegeMap", Constant.PRIVILEGE_MAP);
-        QueryHelper qh = new QueryHelper(Role.class, "r");
+        QueryHelper queryHelper = new QueryHelper(Role.class, "r");
 
         if (searchString != null) {
             searchString = URLDecoder.decode(searchString, "utf-8");
             if (StringUtils.isNotBlank(searchString)) {
-                qh.addQueryCondition("r.name like ?", "%" + searchString + "%");
+                queryHelper.addQueryCondition("r.name like ?", "%" + searchString + "%");
             }
         }
-        roleList = roleService.findObjects(qh);
+        pageResult = roleService.getPageResult(queryHelper, getPageNo(), getPageSize());
+
         return "listUI";
     }
 

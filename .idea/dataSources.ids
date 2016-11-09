@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - day44tax@localhost" uuid="0facd30c-ee59-4ae6-9b64-aabf90c18b66">
+    <database-info product="MySQL" version="5.0.22-community-nt" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="day44tax"/>
+    <table name="info" schema="" catalog="day44tax" type="TABLE">
+      <column name="info_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="type" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="source" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="content" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="memo" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="creator" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="create_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="state" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="info_id"/>
+    </table>
+    <table name="person" schema="" catalog="day44tax" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="role" schema="" catalog="day44tax" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="state" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="role_id"/>
+    </table>
+    <table name="role_privilege" schema="" catalog="day44tax" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="code" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="role_id,code"/>
+      <foreign-key name="FK45FBD62869372004" columns="role_id" ref-table="role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK45FBD62869372004" unique="false" columns="role_id"/>
+    </table>
+    <table name="t_dept" schema="" catalog="day44tax" type="TABLE">
+      <column name="dept_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="org_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="dept_id"/>
+      <foreign-key name="FK_org_dept" columns="org_id" ref-table="t_org" ref-schema="" ref-catalog="day44tax" ref-columns="org_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_org_dept" unique="false" columns="org_id"/>
+    </table>
+    <table name="t_employee" schema="" catalog="day44tax" type="TABLE">
+      <column name="emp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="dept_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="emp_id"/>
+      <foreign-key name="FK_dept_employee" columns="dept_id" ref-table="t_dept" ref-schema="" ref-catalog="day44tax" ref-columns="dept_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_dept_employee" unique="false" columns="dept_id"/>
+    </table>
+    <table name="t_employee_role" schema="" catalog="day44tax" type="TABLE">
+      <column name="emp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="state" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="emp_id,role_id"/>
+      <foreign-key name="FK_employee_role2" columns="role_id" ref-table="t_role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_employee_role" columns="emp_id" ref-table="t_employee" ref-schema="" ref-catalog="day44tax" ref-columns="emp_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_employee_role2" unique="false" columns="role_id"/>
+    </table>
+    <table name="t_leader" schema="" catalog="day44tax" type="TABLE">
+      <column name="emp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="dept_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="position" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="emp_id"/>
+      <foreign-key name="FK_Inheritance_1" columns="emp_id" ref-table="t_employee" ref-schema="" ref-catalog="day44tax" ref-columns="emp_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="t_org" schema="" catalog="day44tax" type="TABLE">
+      <column name="org_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="org_id"/>
+    </table>
+    <table name="t_privilege" schema="" catalog="day44tax" type="TABLE">
+      <column name="pri_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="pri_id"/>
+    </table>
+    <table name="t_role" schema="" catalog="day44tax" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="role_id"/>
+    </table>
+    <table name="t_role_privilege" schema="" catalog="day44tax" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="pri_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="role_id,pri_id"/>
+      <foreign-key name="FK_own" columns="pri_id" ref-table="t_privilege" ref-schema="" ref-catalog="day44tax" ref-columns="pri_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_belong" columns="role_id" ref-table="t_role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_own" unique="false" columns="pri_id"/>
+    </table>
+    <table name="user" schema="" catalog="day44tax" type="TABLE">
+      <column name="id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="dept" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="account" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="password" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="headImg" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="gender" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mobile" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="birthday" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="state" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="memo" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="user_role" schema="" catalog="day44tax" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="user_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="role_id,user_id"/>
+      <foreign-key name="FK143BF46A69372004" columns="role_id" ref-table="role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK143BF46A69372004" unique="false" columns="role_id"/>
+    </table>
+  </data-source>
+</component>
