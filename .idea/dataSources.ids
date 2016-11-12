@@ -7,6 +7,31 @@
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="day44tax"/>
+    <table name="complain" schema="" catalog="day44tax" type="TABLE">
+      <column name="comp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="comp_company" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="comp_name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="comp_mobile" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_NM" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="comp_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="comp_title" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="to_comp_name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="to_comp_dept" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="to_comp_content" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="state" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="comp_id"/>
+    </table>
+    <table name="complain_reply" schema="" catalog="day44tax" type="TABLE">
+      <column name="reply_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="comp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="replyer" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="reply_dept" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="reply_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="reply_content" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="reply_id"/>
+      <foreign-key name="FK_comp_reply" columns="comp_id" ref-table="complain" ref-schema="" ref-catalog="day44tax" ref-columns="comp_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_comp_reply" unique="false" columns="comp_id"/>
+    </table>
     <table name="info" schema="" catalog="day44tax" type="TABLE">
       <column name="info_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
       <column name="type" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
@@ -36,62 +61,6 @@
       <primary-key name="PRIMARY" columns="role_id,code"/>
       <foreign-key name="FK45FBD62869372004" columns="role_id" ref-table="role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK45FBD62869372004" unique="false" columns="role_id"/>
-    </table>
-    <table name="t_dept" schema="" catalog="day44tax" type="TABLE">
-      <column name="dept_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="org_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="dept_id"/>
-      <foreign-key name="FK_org_dept" columns="org_id" ref-table="t_org" ref-schema="" ref-catalog="day44tax" ref-columns="org_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_org_dept" unique="false" columns="org_id"/>
-    </table>
-    <table name="t_employee" schema="" catalog="day44tax" type="TABLE">
-      <column name="emp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="dept_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="emp_id"/>
-      <foreign-key name="FK_dept_employee" columns="dept_id" ref-table="t_dept" ref-schema="" ref-catalog="day44tax" ref-columns="dept_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_dept_employee" unique="false" columns="dept_id"/>
-    </table>
-    <table name="t_employee_role" schema="" catalog="day44tax" type="TABLE">
-      <column name="emp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="state" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="emp_id,role_id"/>
-      <foreign-key name="FK_employee_role2" columns="role_id" ref-table="t_role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="FK_employee_role" columns="emp_id" ref-table="t_employee" ref-schema="" ref-catalog="day44tax" ref-columns="emp_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_employee_role2" unique="false" columns="role_id"/>
-    </table>
-    <table name="t_leader" schema="" catalog="day44tax" type="TABLE">
-      <column name="emp_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="dept_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <column name="position" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="emp_id"/>
-      <foreign-key name="FK_Inheritance_1" columns="emp_id" ref-table="t_employee" ref-schema="" ref-catalog="day44tax" ref-columns="emp_id" update-rule="3" delete-rule="3" deferrability="2"/>
-    </table>
-    <table name="t_org" schema="" catalog="day44tax" type="TABLE">
-      <column name="org_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="org_id"/>
-    </table>
-    <table name="t_privilege" schema="" catalog="day44tax" type="TABLE">
-      <column name="pri_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="pri_id"/>
-    </table>
-    <table name="t_role" schema="" catalog="day44tax" type="TABLE">
-      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="role_id"/>
-    </table>
-    <table name="t_role_privilege" schema="" catalog="day44tax" type="TABLE">
-      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <column name="pri_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
-      <primary-key name="PRIMARY" columns="role_id,pri_id"/>
-      <foreign-key name="FK_own" columns="pri_id" ref-table="t_privilege" ref-schema="" ref-catalog="day44tax" ref-columns="pri_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="FK_belong" columns="role_id" ref-table="t_role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="FK_own" unique="false" columns="pri_id"/>
     </table>
     <table name="user" schema="" catalog="day44tax" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>

@@ -69,8 +69,7 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements Base
         return query.list();
     }
     @Override
-    public PageResult getPageResult(QueryHelper queryHelper, int pageNo,
-                                    int pageSize) {
+    public PageResult getPageResult(QueryHelper queryHelper, int pageNo, int pageSize) {
         Query query=getSession().createQuery(queryHelper.getQueryListHql());
         List<Object> parameters=queryHelper.getParameters();
         //添加查询条件

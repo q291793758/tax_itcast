@@ -53,4 +53,12 @@ public class BaseAction extends ActionSupport {
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
     }
+
+    public String getSearchString() {
+        return searchString;
+    }
+
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
+    }
 }

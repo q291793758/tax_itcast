@@ -17,6 +17,7 @@
         <configuration>
           <fileset id="s2fileset" name="My Fileset " removed="false">
             <file>file://$MODULE_DIR$/config/struts.xml</file>
+            <file>file://$MODULE_DIR$/src/cn/itcast/nsfw/complain/conf/complain-struts.xml</file>
           </fileset>
           <fileset id="s2fileset2" name="My Fileset 2" removed="false">
             <file>file://$MODULE_DIR$/src/cn/itcast/home/conf/home-struts.xml</file>
@@ -47,9 +48,30 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="a.xml" value="0facd30c-ee59-4ae6-9b64-aabf90c18b66" />
           <unit-entry name="sessionFactory" value="dataSource" />
         </datasource-map>
         <naming-strategy-map />
+      </configuration>
+    </facet>
+    <facet type="web" name="Web2">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/js/ueditor/themes/default/images/icons-all.gif" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/web/js/ueditor/themes/default/images" relative="/WEB-INF" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web3">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/js/ueditor/third-party/highcharts/modules/no-data-to-display.js" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/web/js/ueditor/third-party/highcharts/modules" relative="/WEB-INF" />
+        </webroots>
       </configuration>
     </facet>
   </component>

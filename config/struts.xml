@@ -49,7 +49,9 @@
 
 	<!--纳税服务系统首页struts配置文件-->
 	<include file="cn/itcast/nsfw/home/conf/home-struts.xml"/>
-
+	<!--登录管理struts配置文件-->
 	<include file="cn/itcast/login/conf/login-struts.xml"/>
+	<!--投诉及投诉回复struts配置文件-->
+	<include file="cn/itcast/nsfw/complain/conf/complain-struts.xml"/>
 
 </struts>
