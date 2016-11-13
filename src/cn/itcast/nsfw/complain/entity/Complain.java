@@ -8,18 +8,18 @@ import java.util.Set;
 
 public class Complain {
 
-    private String compId;
-    private String compCompany;
-    private String compName;
-    private String compMobile;
-    private Byte isNm;
-    private Timestamp compTime;
-    private String compTitle;
-    private String toCompName;
-    private String toCompDept;
-    private String toCompContent;
-    private String state;
-    private Set<ComplainReply> complainReplies =new HashSet<ComplainReply>();
+    private String compId;   //投诉ID,uuid自动生成
+    private String compCompany;  //投诉人所在公司
+    private String compName;    //投诉人姓名
+    private String compMobile;  //投诉人电话
+    private Byte isNm;          //是否匿名投诉
+    private Timestamp compTime; //投诉时间
+    private String compTitle;   //投诉标题
+    private String toCompName;  //被投诉人姓名
+    private String toCompDept;  //被投诉人部门
+    private String toCompContent;   //被投诉的内容
+    private String state;           //投诉处理状态
+    private Set<ComplainReply> complainReplies =new HashSet<ComplainReply>(); //投诉的所有回复
 
     //状态
     public static String COMPLAIN_STATE_UNDONE = "0";//待受理

@@ -60,7 +60,7 @@
         </tr>
         <tr>
             <td class="tdBg">投诉内容：</td>
-            <td><s:property value="complain.compContent" escape="false"/></td>
+            <td><s:property value="complain.toCompContent" escape="false"/></td>
         </tr>
         <tr><td colspan="2" align="center">受理信息</td></tr>
         <tr>
@@ -101,6 +101,10 @@
         </tr>
     </table>
     <s:hidden name="complain.compId"/>
+    <s:hidden name="searchString"/>
+    <s:hidden name="strState"/>
+    <s:hidden name="startTime"/>
+    <s:hidden name="endTime"/>
     <div class="tc mt20">
         <input type="submit" class="btnB2" value="保存" />
         &nbsp;&nbsp;&nbsp;&nbsp;

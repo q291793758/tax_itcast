@@ -83,5 +83,9 @@
 	<bean id="permissionCheck" class="cn.itcast.core.permission.impl.PermissionCheckImpl">
 		<property name="userService" ref="userService"/>
 	</bean>
+	<bean id="homeAction" class="cn.itcast.home.action.HomeAction">
+		<property name="userService" ref="userService"/>
+		<property name="complainService" ref="complainService"/>
+	</bean>
 
 </beans>

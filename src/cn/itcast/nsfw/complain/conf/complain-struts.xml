@@ -6,10 +6,14 @@
 <struts>
 	<package name="complain-action" namespace="/nsfw" extends="base-default">
 		<action name="complain_*" class="cn.itcast.nsfw.complain.action.ComplainAction" method="{1}">
-			<result name="{1}">/WEB-INF/jsp/nsfw/complain/{1}.jsp</result>
+			<result name="{1}">/WEB-INF/jsp/nsfw/complain/{1}.jsp
+			</result>
 			<result name="list" type="redirectAction">
 				<param name="actionName">complain_listUI</param>
 				<param name="searchString">${searchString}</param>
+				<param name="strState">${strState}</param>
+				<param name="startTime">${startTime}</param>
+				<param name="endTime">${endTime}</param>
 				<param name="encode">true</param>
 			</result>
 

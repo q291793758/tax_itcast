@@ -12,6 +12,6 @@
         <property name="replyDept" column="reply_dept"/>
         <property name="replyTime" column="reply_time"/>
         <property name="replyContent" column="reply_content"/>
-        <many-to-one name="complain" class="cn.itcast.nsfw.complain.entity.Complain"/>
+        <many-to-one name="complain" column="comp_id" class="cn.itcast.nsfw.complain.entity.Complain"/>
     </class>
 </hibernate-mapping>

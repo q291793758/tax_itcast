@@ -38,7 +38,7 @@
                               readonly="true" onfocus="WdatePicker({'skin':'whyGreen','dateFmt':'yyyy-MM-dd HH:mm'});"/>
                     </li>
                     <li>
-                       	状态：<s:select name="complain.state" list="#complainStateMap" headerKey="" headerValue="全部"/>
+                       	状态：<s:select name="strState" id="strState" list="#complainStateMap" headerKey="" headerValue="全部"/>
                     </li>
                     <li><input type="button" class="s_button" value="搜 索" onclick="doSearch()"/></li>
                     <li style="float:right;">

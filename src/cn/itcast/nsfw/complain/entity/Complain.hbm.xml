@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="cn.itcast.nsfw.complain.entity.Complain" table="complain" >
+    <class name="cn.itcast.nsfw.complain.entity.Complain" table="complain">
         <id name="compId" column="comp_id">
             <generator class="uuid"/>
         </id>
@@ -18,8 +18,10 @@
         <property name="toCompDept" column="to_comp_dept"/>
         <property name="toCompContent" column="to_comp_content"/>
         <property name="state" column="state"/>
-        <set name="complainReplies" inverse="true">
-            <key/>
+        <set name="complainReplies" inverse="true" cascade="save-update,delete" lazy="false" order-by="replyTime asc">
+            <key>
+                <column name="comp_id"/>
+            </key>
             <one-to-many not-found="ignore" class="cn.itcast.nsfw.complain.entity.ComplainReply"/>
         </set>
     </class>
