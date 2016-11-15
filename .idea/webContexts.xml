@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/home/complainAddUI.jsp" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/nsfw/complain/annualStatisticChartUI.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/jsp/nsfw/complain" />
         <entry key="file://$PROJECT_DIR$/web/WEB-INF/jsp/nsfw/complain/dealUI.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/jsp/nsfw/complain" />
       </map>
     </option>

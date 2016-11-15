@@ -28,8 +28,14 @@
       <column name="reply_dept" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="reply_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="reply_content" sqlType="VARCHAR" precision="1024" scale="0" nullable="true" jdbcType="12"/>
+      <column name="complain" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="reply_id"/>
+      <foreign-key name="FK6A0B8414C2935DCF" columns="complain" ref-table="complain" ref-schema="" ref-catalog="day44tax" ref-columns="comp_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK6A0B8414E64E4A01" columns="id" ref-table="complain" ref-schema="" ref-catalog="day44tax" ref-columns="comp_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_comp_reply" columns="comp_id" ref-table="complain" ref-schema="" ref-catalog="day44tax" ref-columns="comp_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK6A0B8414C2935DCF" unique="false" columns="complain"/>
+      <index name="FK6A0B8414E64E4A01" unique="false" columns="id"/>
       <index name="FK_comp_reply" unique="false" columns="comp_id"/>
     </table>
     <table name="info" schema="" catalog="day44tax" type="TABLE">
@@ -61,6 +67,10 @@
       <primary-key name="PRIMARY" columns="role_id,code"/>
       <foreign-key name="FK45FBD62869372004" columns="role_id" ref-table="role" ref-schema="" ref-catalog="day44tax" ref-columns="role_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK45FBD62869372004" unique="false" columns="role_id"/>
+    </table>
+    <table name="tmonth" schema="" catalog="day44tax" type="TABLE">
+      <column name="imonth" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="imonth"/>
     </table>
     <table name="user" schema="" catalog="day44tax" type="TABLE">
       <column name="id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" def="Jyc="/>

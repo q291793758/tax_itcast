@@ -6,14 +6,20 @@ import cn.itcast.nsfw.complain.entity.Complain;
 import cn.itcast.nsfw.complain.entity.ComplainReply;
 import cn.itcast.nsfw.complain.service.ComplainService;
 import com.opensymphony.xwork2.ActionContext;
+import org.apache.commons.collections.map.LinkedMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.struts2.ServletActionContext;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * The type Complain action.
@@ -27,6 +33,7 @@ public class ComplainAction extends BaseAction {
     private String startTime;  //回显开始时间
     private String endTime;  //回显结束时间
 
+    private Map statisticsData;
     private String[] dateformat = new String[]{"yyyy-MM-dd HH:mm"};
 
     /**
@@ -106,6 +113,47 @@ public class ComplainAction extends BaseAction {
         return "list";
     }
 
+    //跳转投诉年度统计页面
+    public String annualStatisticChartUI() {
+        //创建年份列表
+        ArrayList<Integer> years = new ArrayList<Integer>();
+        int curyear = Calendar.getInstance().get(Calendar.YEAR);
+        years.add(curyear);
+        for (int i = 1; i <= 4; i++) {
+            years.add(curyear-i);
+        }
+        ActionContext.getContext().put("years",years);
+        return "annualStatisticChartUI";
+    }
+
+    //获取年度统计数据
+    public String getAnnualStatisticData() {
+        //1 根据年份获取投诉统计数
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String yearStr = request.getParameter("year");
+        int year=0;                                           //前台传递的年份
+        if (StringUtils.isNotBlank(yearStr)) {
+            year = Integer.parseInt(yearStr);
+        } else {
+            year=Calendar.getInstance().get(Calendar.YEAR);
+        }
+
+        //2 封装数据 json格式
+        if (statisticsData == null) {
+            statisticsData=new LinkedMap();
+        }
+        statisticsData.put("msg", "success");  //标记
+        statisticsData.put("chartData", complainService.getAnnualStatisticsByYear(year));
+
+
+
+
+
+
+        return "annualStatisticData";
+    }
+
+
 
     /**
      * Gets complain.
@@ -162,5 +210,9 @@ public class ComplainAction extends BaseAction {
 
     public void setStrState(String strState) {
         this.strState = strState;
+    }
+
+    public Map getStatisticsData() {
+        return statisticsData;
     }
 }
