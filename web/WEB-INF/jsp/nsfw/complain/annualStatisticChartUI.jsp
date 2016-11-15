@@ -16,9 +16,9 @@
 
         //获取年份,传送服务器,获取投诉统计
         function doAnnualStatistic() {
-            var year = $("#year1 option :selected").val();
-            if (year = "" || year == undefined) {
-                year = new Date().setFullYear();
+            var year = $("#year option:selected").val();
+            if (year == "" || year == undefined) {
+                year = new Date().getFullYear();
             }
             $.ajax({
                         url: "${bathPath}nsfw/complain_getAnnualStatisticData.action",
@@ -31,8 +31,8 @@
                                 var revenueChart = new FusionCharts({
                                     "type": "line",     //曲线图
                                     "renderAt": "chartContainer",  //渲染到哪里
-                                    "width": "500",
-                                    "height": "300",
+                                    "width": "600",
+                                    "height": "400",
                                     "dataFormat": "json",
                                     "dataSource": {
                                         "chart": {
@@ -65,8 +65,10 @@
 
 <body>
 <br>
-<s:select id="year1" list="#years" onchange="doAnnualStatistic()"></s:select>
+<div style="text-align: center;width: 100%;">
+    <s:select id="year" list="#years" onchange="doAnnualStatistic()"></s:select>
+</div>
 <br>
-<div id="chartContainer"></div>
+<div id="chartContainer" style="text-align: center;width: 100%;"></div>
 </body>
 </html>

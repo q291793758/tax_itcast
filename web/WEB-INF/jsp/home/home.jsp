@@ -1,7 +1,8 @@
-﻿﻿<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
+﻿﻿
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
-    pageContext.setAttribute("basePath", request.getContextPath()) ;
+    pageContext.setAttribute("basePath", request.getContextPath());
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -9,7 +10,7 @@
 <head>
     <title>国税协同办公平台</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="${basePath}/css/home.css" rel="stylesheet" type="text/css" />
+    <link href="${basePath}/css/home.css" rel="stylesheet" type="text/css"/>
 
 </head>
 
@@ -20,33 +21,33 @@
     <tr>
         <td width="32" height="106">&nbsp;</td>
         <td width="418" height="106" align="left" valign="middle">
-            <img class="zxx_test_png" src="${basePath}/images/home/ind01.png" width="470" height="90" alt="" />
+            <img class="zxx_test_png" src="${basePath}/images/home/ind01.png" width="470" height="90" alt=""/>
         </td>
         <td width="211">&nbsp;</td>
         <td width="328">
             <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="450" height="86">
-                <param name="movie" value="${basePath}/images/home/flash.swf" />
-                <param name="quality" value="high" />
-                <param name="wmode" value="transparent" />
-                <param name="swfversion" value="6.0.65.0" />
+                <param name="movie" value="${basePath}/images/home/flash.swf"/>
+                <param name="quality" value="high"/>
+                <param name="wmode" value="transparent"/>
+                <param name="swfversion" value="6.0.65.0"/>
                 <!-- 此 param 标签提示使用 Flash Player 6.0 r65 和更高版本的用户下载最新版本的 Flash Player。如果您不想让用户看到该提示，请将其删除。 -->
-                <param name="expressinstall" value="Scripts/expressInstall.swf" />
+                <param name="expressinstall" value="Scripts/expressInstall.swf"/>
                 <!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 -->
                 <!--[if !IE]>-->
                 <object type="application/x-shockwave-flash" data="${basePath}/images/home/flash.swf"
                         width="380" height="86">
                     <!--<![endif]-->
-                    <param name="quality" value="high" />
-                    <param name="wmode" value="transparent" />
-                    <param name="swfversion" value="6.0.65.0" />
-                    <param name="expressinstall" value="Scripts/expressInstall.swf" />
+                    <param name="quality" value="high"/>
+                    <param name="wmode" value="transparent"/>
+                    <param name="swfversion" value="6.0.65.0"/>
+                    <param name="expressinstall" value="Scripts/expressInstall.swf"/>
                     <!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 -->
                     <div>
                         <h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4>
                         <p>
                             <a href="http://www.adobe.com/go/getflashplayer"><img
                                     src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
-                                    alt="获取 Adobe Flash Player" width="112" height="33" />
+                                    alt="获取 Adobe Flash Player" width="112" height="33"/>
                             </a>
                         </p>
                     </div>
@@ -72,10 +73,10 @@
                     <td align="right">
                         <a><b></b><font color="red">欢迎您，<s:property value="#session.SYS_USER.name"/>&nbsp;</font></a>
                     </td>
-                    <td align="center"><img src="${basePath}/images/home/help.png" width="12" height="17"  /></td>
+                    <td align="center"><img src="${basePath}/images/home/help.png" width="12" height="17"/></td>
                     <td align="left"><a href="javascript:void(0);">帮助</a></td>
-                    <td align="center"><img src="${basePath}/images/home/exit.png" width="14" height="14"   /></td>
-                    <td align="left" valign="middle" ><a href="${basePath }/sys/login_logout.action">退出</a></td>
+                    <td align="center"><img src="${basePath}/images/home/exit.png" width="14" height="14"/></td>
+                    <td align="left" valign="middle"><a href="${basePath }/sys/login_logout.action">退出</a></td>
                 </tr>
             </table>
         </td>
@@ -88,8 +89,8 @@
         <li class="hover"><a href="javascript:void(0);">工作主页</a></li>
         <li><a href="javascript:void(0);">行政管理</a></li>
         <li><a href="javascript:void(0);">后勤服务</a></li>
-        <li><a href="javascript:void(0);">在线学习</a></li>       
-        <li><a href="${basePath }/nsfw/home_frame.action">纳税服务</a> </li>
+        <li><a href="javascript:void(0);">在线学习</a></li>
+        <li><a href="${basePath }/nsfw/home_frame.action">纳税服务</a></li>
         <li><a href="javascript:void(0);">我的空间</a></li>
     </ul>
 </div>
@@ -107,28 +108,31 @@
                     <td width="76" height="100" align="center" valign="middle">
                         <div class="left-tx">
                             <s:if test="%{#session.SYS_USER.headImg != null && #session.SYS_USER.headImg !=''}">
-                            	<img src="${basePath}/upload/<s:property value='#session.SYS_USER.headImg'/>" width="70" height="70" />
+                                <img src="${basePath}/upload/<s:property value='#session.SYS_USER.headImg'/>" width="70"
+                                     height="70"/>
                             </s:if><s:else>
-								<img src="${basePath}/images/home/gs09.png" width="70" height="70" />
-							</s:else>
+                            <img src="${basePath}/images/home/gs09.png" width="70" height="70"/>
+                        </s:else>
                         </div>
                     </td>
-                    <td width="5%"><img src="${basePath}/images/home/gs10.png" width="4" height="59" alt="" /></td>
-                    <td width="60%"><table width="95%" border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                            <td colspan="2" style=" font-weight:bold; color:#3a7daa;"><s:property value="#session.SYS_USER.name"/></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">所属部门：<s:property value="#session.SYS_USER.dept"/></td>
-                        </tr>
-                    </table>
+                    <td width="5%"><img src="${basePath}/images/home/gs10.png" width="4" height="59" alt=""/></td>
+                    <td width="60%">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td colspan="2" style=" font-weight:bold; color:#3a7daa;"><s:property
+                                        value="#session.SYS_USER.name"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">所属部门：<s:property value="#session.SYS_USER.dept"/></td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>
         </div>
         <!-- }个人资料 -->
     </div>
-<!-- }左 -->
+    <!-- }左 -->
 
     <!-- 右{ -->
     <div class="right">
@@ -137,16 +141,22 @@
                 <h1>信息列表</h1>
             </div>
             <table width="98%" border="0" align="center">
-            	
-                <tr>
-                    <td height="23">
-                    xx标题
-                    </td>
-                    <td width="150px">xx分类</td>
-                    <td width="150px">xx创建人</td>
-                    <td width="150px">xx创建时间</td>
-                </tr>
-                
+                <s:iterator value="#infoList">
+                    <tr>
+                        <td height="23">
+                            <s:url var="infoViewUrl" action="home_infoViewUI" namespace="/sys">
+                                <%--传递infoId到后台--%>
+                                <s:param name="info.infoId" value="infoId"> </s:param>
+                            </s:url>
+                            <s:a href="%{infoViewUrl}" target="_blank">
+                                <s:property value="title"/>
+                            </s:a>
+                        </td>
+                        <td width="150px"><s:property value="#infoTypeMap[type]"/></td>
+                        <td width="150px"><s:property value="creator"/></td>
+                        <td width="150px"><s:date format="yyyy-MM-dd HH:mm" name="createTime"/></td>
+                    </tr>
+                </s:iterator>
             </table>
         </div>
     </div>
@@ -157,21 +167,28 @@
         <div class="lc_grzx1">
             <div class="lc_grzxbt">
                 <h1>我的投诉</h1>
-                <div style="float:right;padding-top:3px;">
-                	<s:a action="home_complainAddUI"  namespace="/sys" target="_blank" >我要投诉</s:a>&nbsp;&nbsp;
+                <div style="float:right;padding-top:4px;width: 120px">
+                    <s:a action="home_complainAddUI" namespace="/sys" target="_blank">我要投诉</s:a>&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
             <table width="98%" border="0" align="center">
-                
-                <tr>
-                    <td height="23">
-                    xxx标题
-                    </td>
-                    <td width="180px">xx受理状态</td>
-                    <td width="180px">是否匿名投诉</td>
-                    <td width="180px">投诉时间</td>
-                </tr>
-                
+                <s:iterator value="#complainList">
+                    <tr>
+                        <td height="23">
+
+                            <s:a action="home_complainViewUI">
+                                <s:param name="comp.compId" value="compId"/>
+                                <s:property value="compTitle"/>
+
+                            </s:a>
+
+
+                        </td>
+                        <td width="180px"><s:property value="#complainStateMap[state]"/></td>
+                        <td width="180px"><s:property value="isNm==0?'匿名投诉':'非匿名投诉'"/></td>
+                        <td width="180px"><s:date name="compTime" format="yyyy-MM-dd HH:mm"/></td>
+                    </tr>
+                </s:iterator>
             </table>
         </div>
 
